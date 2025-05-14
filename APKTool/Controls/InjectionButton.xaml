@@ -1,0 +1,43 @@
+﻿<UserControl
+    x:Class="APKTool.Controls.InjectionButton"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:APKTool.Controls"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:svgc="http://sharpvectors.codeplex.com/svgc/"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+
+    <materialDesign:Card
+        materialDesign:ElevationAssist.Elevation="Dp5"
+        Background="{DynamicResource CustomDarkBackgroundColor}"
+        UniformCornerRadius="10">
+        <Grid Margin="20">
+            <Button
+                Height="48"
+                materialDesign:ButtonAssist.CornerRadius="5"
+                Background="{DynamicResource CustomButtonBackgroundColor}"
+                BorderThickness="0"
+                Command="{Binding StartInjectionCommand}"
+                Style="{StaticResource CustomButton}">
+                <Button.Content>
+                    <StackPanel Orientation="Horizontal">
+                        <svgc:SvgViewbox
+                            Width="16"
+                            Height="16"
+                            Margin="0,1,5,0"
+                            Source="/Resources/Icons/inject.svg" />
+                        <TextBlock
+                            FontSize="16"
+                            FontWeight="Medium"
+                            Foreground="{DynamicResource CustomPrimaryTextColor}"
+                            Text="Start Injection" />
+                    </StackPanel>
+                </Button.Content>
+            </Button>
+        </Grid>
+    </materialDesign:Card>
+</UserControl>

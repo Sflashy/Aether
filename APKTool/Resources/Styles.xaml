@@ -1,0 +1,132 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes">
+
+    <!--  Status Colors  -->
+    <Color x:Key="CustomInfoText">#66D9EF</Color>
+    <SolidColorBrush x:Key="CustomInfoTextColor" Color="{StaticResource CustomInfoText}" />
+
+    <Color x:Key="CustomWarningText">#FD971F</Color>
+    <SolidColorBrush x:Key="CustomWarningTextColor" Color="{StaticResource CustomWarningText}" />
+
+    <Color x:Key="CustomErorrText">#ff5555</Color>
+    <SolidColorBrush x:Key="CustomErorrTextColor" Color="{StaticResource CustomErorrText}" />
+
+
+    <Style
+        x:Key="CustomButton"
+        BasedOn="{StaticResource MaterialDesignFlatButton}"
+        TargetType="{x:Type Button}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border
+                        x:Name="Border"
+                        Background="{TemplateBinding Background}"
+                        CornerRadius="{TemplateBinding materialDesign:ButtonAssist.CornerRadius}"
+                        IsEnabled="{TemplateBinding IsEnabled}">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="Border" Property="Background" Value="#4B5A6E" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style
+        x:Key="CustomToggleButtonStyle"
+        BasedOn="{StaticResource MaterialDesignSwitchToggleButton}"
+        TargetType="ToggleButton">
+        <Setter Property="Width" Value="50" />
+        <Setter Property="Height" Value="25" />
+        <Setter Property="Background" Value="#2c3141" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ToggleButton">
+                    <Grid>
+                        <!--  Toggle background  -->
+                        <Border
+                            x:Name="SwitchBackground"
+                            Background="{TemplateBinding Background}"
+                            CornerRadius="12.5" />
+
+                        <!--  Toggle thumb  -->
+                        <Ellipse
+                            x:Name="SwitchThumb"
+                            Width="20"
+                            Height="20"
+                            Margin="2.5"
+                            HorizontalAlignment="Left"
+                            Fill="Gray" />
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <!--  IsChecked True  -->
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter TargetName="SwitchThumb" Property="HorizontalAlignment" Value="Right" />
+                            <Setter TargetName="SwitchThumb" Property="Fill" Value="#00FFAA" />
+                        </Trigger>
+
+                        <!--  IsMouseOver  -->
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="SwitchThumb" Property="Opacity" Value="0.85" />
+                        </Trigger>
+
+                        <!--  IsEnabled False  -->
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="SwitchThumb" Property="Fill" Value="#444" />
+                            <Setter TargetName="SwitchBackground" Property="Background" Value="#222" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style
+        x:Key="CustomProgressBar"
+        BasedOn="{StaticResource MaterialDesignLinearProgressBar}"
+        TargetType="ProgressBar">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ProgressBar">
+                    <Border
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="4">
+                        <Grid x:Name="PART_Track" ClipToBounds="true">
+                            <Rectangle
+                                x:Name="PART_Indicator"
+                                Width="0"
+                                HorizontalAlignment="Left"
+                                Fill="{TemplateBinding Foreground}"
+                                RadiusX="4"
+                                RadiusY="4" />
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsIndeterminate" Value="True">
+                            <Setter TargetName="PART_Indicator" Property="Visibility" Value="Collapsed" />
+                        </Trigger>
+                        <Trigger Property="Orientation" Value="Vertical">
+                            <Setter TargetName="PART_Indicator" Property="HorizontalAlignment" Value="Stretch" />
+                            <Setter TargetName="PART_Indicator" Property="VerticalAlignment" Value="Bottom" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Background" Value="#FFE0E0E0" />
+        <Setter Property="Foreground" Value="#FF2196F3" />
+        <Setter Property="Height" Value="10" />
+    </Style>
+
+    <QuadraticEase x:Key="EaseOut" EasingMode="EaseOut" />
+
+</ResourceDictionary>

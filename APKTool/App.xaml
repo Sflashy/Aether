@@ -1,0 +1,31 @@
+﻿<Application
+    x:Class="APKTool.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:converters="clr-namespace:APKTool.Converters"
+    xmlns:local="clr-namespace:APKTool"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <materialDesign:BundledTheme
+                    BaseTheme="Dark"
+                    PrimaryColor="Grey"
+                    SecondaryColor="Lime" />
+
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesign3.Defaults.xaml" />
+                <ResourceDictionary Source="Resources/Styles.xaml" />
+                <ResourceDictionary Source="Resources/Themes/CustomDarkTheme.xaml" />
+                <ResourceDictionary Source="Resources/Themes/CustomLightTheme.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <FontFamily x:Key="Inter">pack://application:,,,/Resources/Fonts/Inter/#Inter</FontFamily>
+            <FontFamily x:Key="Urbanist">pack://application:,,,/Resources/Fonts/Urbanist/#Urbanist</FontFamily>
+            <FontFamily x:Key="JetBrainsMono">pack://application:,,,/Resources/Fonts/JetBrainsMono/#JetBrains Mono</FontFamily>
+            <converters:ConsoleOutputColorConverter x:Key="ConsoleOutputColorConverter" />
+            <converters:DoubleToVisibilityConverter x:Key="DoubleToVisibilityConverter" />
+            <converters:DeviceStatusColorConverter x:Key="DeviceStatusColorConverter" />
+            <converters:USBDebuggingStatusToColorConverter x:Key="USBDebuggingStatusToColorConverter" />
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
