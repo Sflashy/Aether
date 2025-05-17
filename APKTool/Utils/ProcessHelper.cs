@@ -2,7 +2,7 @@
 
 namespace APKTool.Utils;
 
-static class ProcessHelper
+public static class ProcessHelper
 {
     public static async Task<(bool success, string output)> RunAsync(string fileName, string arguments)
     {

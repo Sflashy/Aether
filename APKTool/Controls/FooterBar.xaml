@@ -17,7 +17,8 @@
         HorizontalAlignment="Stretch"
         VerticalAlignment="Bottom"
         materialDesign:ElevationAssist.Elevation="Dp5"
-        Background="{DynamicResource CustomDarkBackgroundColor}">
+        Background="{DynamicResource CustomDarkBackgroundColor}"
+        UniformCornerRadius="5">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />

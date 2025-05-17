@@ -15,8 +15,6 @@
 
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesign3.Defaults.xaml" />
                 <ResourceDictionary Source="Resources/Styles.xaml" />
-                <ResourceDictionary Source="Resources/Themes/CustomDarkTheme.xaml" />
-                <ResourceDictionary Source="Resources/Themes/CustomLightTheme.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
             <FontFamily x:Key="Inter">pack://application:,,,/Resources/Fonts/Inter/#Inter</FontFamily>
@@ -26,6 +24,8 @@
             <converters:DoubleToVisibilityConverter x:Key="DoubleToVisibilityConverter" />
             <converters:DeviceStatusColorConverter x:Key="DeviceStatusColorConverter" />
             <converters:USBDebuggingStatusToColorConverter x:Key="USBDebuggingStatusToColorConverter" />
+            <converters:EnumToBooleanConverter x:Key="EnumToBooleanConverter" />
+            <converters:FridaAvailabilityToColorConverter x:Key="FridaAvailabilityToColorConverter" />
         </ResourceDictionary>
     </Application.Resources>
 </Application>

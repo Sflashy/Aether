@@ -21,6 +21,7 @@ public class MetaDataService : IMetaDataService
         string manifestFile = Directory.GetFiles(folderPath, "manifest.json", SearchOption.TopDirectoryOnly).FirstOrDefault();
         if (manifestFile == null) return null;
         Manifest manifest = JsonConvert.DeserializeObject<Manifest>(File.ReadAllText(manifestFile));
+        _notifier.NotifyConsole($"Architecture found: {manifest.Architecture}", OutputType.Debug);
         return manifest;
     }
 

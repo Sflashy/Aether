@@ -22,24 +22,22 @@ public class DecompilerService : IDecompilerService
 
     public async Task DecompileApkAsync(string apkPath)
     {
-        _notifier.NotifyConsole("Analyzing APK files...", OutputType.Debug);
         string[] apks = Directory.GetFiles(apkPath, "*.apk", SearchOption.AllDirectories);
         if (apks.Length == 0)
         {
             throw new Exception("No APK files found to decompile.");
         }
-        
+        _notifier.NotifyConsole($"Decompiling APK files...", OutputType.Debug);
         foreach (string apk in apks)
         {
-            _notifier.NotifyConsole($"Decompiling {Path.GetFileName(apk)}...", OutputType.Debug);
+            
             var (success, output) = await Task.Run(async () =>
             {
                 return await ProcessHelper.RunAsync(PathService.ApkToolPath, $"d \"{apk}\" -f -o \"{Path.Combine(apkPath, PathService.DecompiledPath)}/{Path.GetFileNameWithoutExtension(apk)}\"");
             });
             if(!success)
             {
-                _notifier.NotifyConsole($"Failed to decompile: {Path.GetFileName(apk)} | {output}", OutputType.Error);
-                return;
+                throw new Exception($"Failed to decompile: {Path.GetFileName(apk)} | {output}");
             }
             Activity activity = new Activity(Path.GetFileName(apk), "apk decompiled", Activity.ActivityType.APK);
             _notifier.NotifyActivity(activity);

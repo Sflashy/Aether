@@ -7,14 +7,13 @@
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:svgc="http://sharpvectors.codeplex.com/svgc/"
+    xmlns:viewmodels="clr-namespace:APKTool.ViewModels"
+    d:DataContext="{d:DesignInstance Type=viewmodels:MainViewModel}"
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
 
-    <materialDesign:Card
-        materialDesign:ElevationAssist.Elevation="Dp5"
-        Background="{DynamicResource CustomDarkBackgroundColor}"
-        UniformCornerRadius="10">
+    <materialDesign:Card Background="{DynamicResource CustomDarkBackgroundColor}" UniformCornerRadius="10">
         <Grid Margin="20">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
@@ -23,62 +22,77 @@
             </Grid.RowDefinitions>
             <TextBlock
                 Grid.Row="0"
-                FontSize="15"
-                FontWeight="Medium"
-                Foreground="{DynamicResource CustomPrimaryTextColor}"
+                Style="{StaticResource CustomMenuTitleText}"
                 Text="Frida Script" />
-            <StackPanel
-                Grid.Row="1"
-                Margin="0,15,0,0"
-                Orientation="Horizontal">
+
+            <Grid Grid.Row="1" Margin="0,20,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
                 <Border
-                    BorderBrush="{DynamicResource CustomBorderColor}"
-                    BorderThickness="1"
-                    CornerRadius="5">
+                    Grid.Column="0"
+                    HorizontalAlignment="Stretch"
+                    Background="{DynamicResource CustomButtonBackgroundColor}"
+                    CornerRadius="5,0,0,5">
                     <TextBox
-                        Width="152"
                         Padding="10"
+                        HorizontalAlignment="Stretch"
+                        materialDesign:HintAssist.Hint="agent.js"
                         BorderThickness="0"
+                        FontSize="14"
                         FontWeight="Medium"
                         Foreground="{DynamicResource CustomPrimaryTextColor}"
-                        Text="scripts/bypas_root.js" />
+                        Text="{Binding SelectedScriptFile}" />
                 </Border>
                 <Button
-                    Margin="5,0,0,0"
-                    materialDesign:ButtonAssist.CornerRadius="5"
+                    Grid.Column="1"
+                    Width="40"
+                    Height="38"
+                    Padding="0"
+                    materialDesign:ButtonAssist.CornerRadius="0,5,5,0"
                     Background="{DynamicResource CustomButtonBackgroundColor}"
-                    Style="{StaticResource MaterialDesignFlatButton}">
+                    Command="{Binding ScriptSelectDialogCommand}"
+                    Style="{StaticResource CustomButton}">
                     <Button.Content>
-                        <svgc:SvgViewbox
-                            Width="15"
-                            Height="15"
-                            Source="/Resources/Icons/Attachment.svg" />
+                        <materialDesign:PackIcon
+                            Width="20"
+                            Height="20"
+                            Kind="FileSearch" />
                     </Button.Content>
                 </Button>
-            </StackPanel>
-            <Button
-                Grid.Row="2"
-                Height="38"
-                Margin="0,15,0,0"
-                materialDesign:ButtonAssist.CornerRadius="5"
-                BorderBrush="{DynamicResource CustomBorderColor}"
-                BorderThickness="1"
-                Style="{StaticResource MaterialDesignFlatButton}">
-                <Button.Content>
-                    <StackPanel Orientation="Horizontal">
-                        <svgc:SvgViewbox
-                            Width="15"
-                            Height="15"
-                            Margin="0,0,5,0"
-                            Source="/Resources/Icons/new_script.svg" />
-                        <TextBlock
-                            FontSize="14"
-                            FontWeight="Medium"
-                            Foreground="{DynamicResource CustomPrimaryTextColor}"
-                            Text="New Script" />
-                    </StackPanel>
-                </Button.Content>
-            </Button>
+            </Grid>
+
+            <Grid Grid.Row="2" Margin="0,25,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <TextBlock
+                    Grid.Row="0"
+                    FontSize="15"
+                    FontWeight="Medium"
+                    Foreground="{DynamicResource CustomPrimaryTextColor}"
+                    Text="Injection Mode" />
+                <StackPanel Grid.Row="1" Margin="0,15,0,0">
+                    <RadioButton
+                        Content="Debug Mode"
+                        FontSize="13"
+                        FontWeight="Medium"
+                        Foreground="{DynamicResource CustomSecondaryTextColor}"
+                        GroupName="InjectionMode"
+                        IsChecked="{Binding InjectionType, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Debug}" />
+                    <RadioButton
+                        Margin="0,10,0,0"
+                        Content="Persistent Injection"
+                        FontSize="13"
+                        FontWeight="Medium"
+                        Foreground="{DynamicResource CustomSecondaryTextColor}"
+                        GroupName="InjectionMode"
+                        IsChecked="{Binding InjectionType, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Persistent}" />
+                </StackPanel>
+            </Grid>
         </Grid>
+
     </materialDesign:Card>
 </UserControl>

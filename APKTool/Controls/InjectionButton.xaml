@@ -21,8 +21,7 @@
                 materialDesign:ButtonAssist.CornerRadius="5"
                 Background="{DynamicResource CustomButtonBackgroundColor}"
                 BorderThickness="0"
-                Command="{Binding StartInjectionCommand}"
-                Style="{StaticResource CustomButton}">
+                Command="{Binding StartInjectionCommand}">
                 <Button.Content>
                     <StackPanel Orientation="Horizontal">
                         <svgc:SvgViewbox

@@ -27,9 +27,7 @@
 
             <TextBlock
                 Grid.Row="0"
-                FontSize="15"
-                FontWeight="Medium"
-                Foreground="{DynamicResource CustomPrimaryTextColor}"
+                Style="{StaticResource CustomMenuTitleText}"
                 Text="Frida Gadget" />
             <ProgressBar
                 HorizontalAlignment="Right"
@@ -38,14 +36,15 @@
                 Opacity="{Binding IsDownloading}"
                 Style="{StaticResource MaterialDesignCircularProgressBar}" />
 
-            <StackPanel Grid.Row="1" Margin="0,20,0,0">
-                <TextBlock Foreground="{DynamicResource CustomSecondaryTextColor}" Text="Version" />
+            <StackPanel Grid.Row="1" Margin="0,15,0,0">
+                <TextBlock Style="{StaticResource CustomMenuSecondaryTitleText}" Text="Version" />
                 <ComboBox
                     Height="35"
                     Margin="0,10,0,0"
                     Padding="10"
                     Background="{DynamicResource CustomButtonBackgroundColor}"
                     BorderThickness="0"
+                    FontSize="14"
                     FontWeight="Medium"
                     Foreground="{DynamicResource CustomPrimaryTextColor}"
                     ItemsSource="{Binding AvailableFridaVersions}"
@@ -58,25 +57,23 @@
                     </ComboBox.ItemContainerStyle>
                     <ComboBox.ItemTemplate>
                         <DataTemplate DataType="models:Frida">
-                            <TextBlock Text="{Binding TagName}" />
+                            <TextBlock Foreground="{Binding IsInstalled, Mode=OneWay, Converter={StaticResource FridaAvailabilityToColorConverter}}" Text="{Binding Version}" />
                         </DataTemplate>
                     </ComboBox.ItemTemplate>
                 </ComboBox>
             </StackPanel>
 
             <StackPanel Grid.Row="2" Margin="0,20,0,0">
-                <TextBlock
-                    FontWeight="Medium"
-                    Foreground="{DynamicResource CustomSecondaryTextColor}"
-                    Text="Architecture" />
+                <TextBlock Style="{StaticResource CustomMenuSecondaryTitleText}" Text="Architecture" />
                 <ComboBox
                     Height="35"
                     Margin="0,10,0,0"
                     Padding="10"
                     Background="{DynamicResource CustomButtonBackgroundColor}"
                     BorderThickness="0"
+                    FontSize="14"
                     FontWeight="Medium"
-                    Foreground="{DynamicResource CustomPrimaryTextColor}"
+                    Foreground="{Binding SelectedFridaVersion.IsInstalled, Converter={StaticResource FridaAvailabilityToColorConverter}}"
                     ItemsSource="{Binding SelectedFridaVersion.Architectures}"
                     SelectedItem="{Binding SelectedFridaVersion.Architecture, Mode=TwoWay}"
                     Style="{StaticResource MaterialDesignOutlinedComboBox}">
@@ -87,7 +84,7 @@
                     </ComboBox.ItemContainerStyle>
                     <ComboBox.ItemTemplate>
                         <DataTemplate DataType="string">
-                            <TextBlock FontWeight="Medium" Text="{Binding}" />
+                            <TextBlock Text="{Binding}" />
                         </DataTemplate>
                     </ComboBox.ItemTemplate>
                 </ComboBox>
@@ -121,9 +118,7 @@
                 Grid.Row="4"
                 Margin="0,15,0,0"
                 HorizontalAlignment="Center"
-                FontSize="13"
-                FontWeight="Medium"
-                Foreground="{DynamicResource CustomSecondaryTextColor}"
+                Style="{StaticResource CustomMenuSecondaryTitleText}"
                 Text="Gadget Size: ~4.2 MB" />
         </Grid>
     </materialDesign:Card>

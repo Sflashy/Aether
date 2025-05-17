@@ -29,7 +29,7 @@ public class FridaService : IFridaService
     public async Task DownloadAndExtractAsync(Frida fridaVersion)
     {
         _notifier.NotifyDownloadStatus(1);
-        _notifier.NotifyConsole($"Downloading frida-gadget version {fridaVersion.TagName} for {fridaVersion.Architecture}...", OutputType.Debug);
+        _notifier.NotifyConsole($"Downloading frida-gadget version {fridaVersion.Version} for {fridaVersion.Architecture}...", OutputType.Debug);
 
         try
         {
@@ -78,11 +78,13 @@ public class FridaService : IFridaService
             _notifier.NotifyConsole($"Failed to check for frida-gadget versions due to {response.ReasonPhrase.ToLower()}", OutputType.Error);
             return [];
         }
+        
         var data = await response.Content.ReadAsStringAsync();
-        Frida[] fridaVersions = JsonConvert.DeserializeObject<Frida[]>(data);
-        fridaVersions[0].TagName = fridaVersions[0].TagName + " (latest)";
-        _notifier.NotifyConsole($"Latest frida-gadget version: {fridaVersions[0].TagName}", OutputType.Debug);
-        return fridaVersions;
+        Frida[] fridas = JsonConvert.DeserializeObject<Frida[]>(data);
+        
+        fridas[0].Version = fridas[0].Version + " (latest)";
+        _notifier.NotifyConsole($"Latest frida-gadget version: {fridas[0].Version}", OutputType.Debug);
+        return fridas;
     }
 
     private (string fridaGadgetUrl, string outputFile) GetFridaGadgetDownloadUrlAndPath(Frida frida)

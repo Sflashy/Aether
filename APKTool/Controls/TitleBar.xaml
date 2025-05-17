@@ -8,6 +8,8 @@
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:svgc="http://sharpvectors.codeplex.com/svgc/"
+    xmlns:viewmodels="clr-namespace:APKTool.ViewModels"
+    d:DataContext="{d:DesignInstance Type=viewmodels:MainViewModel}"
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
@@ -17,11 +19,17 @@
         VerticalContentAlignment="Center"
         materialDesign:ElevationAssist.Elevation="Dp5"
         Background="{DynamicResource CustomDarkBackgroundColor}"
-        UniformCornerRadius="0">
+        UniformCornerRadius="5">
         <i:Interaction.Triggers>
             <i:EventTrigger EventName="MouseLeftButtonDown">
                 <i:InvokeCommandAction
                     Command="{Binding DragWindowCommand}"
+                    CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
+                    PassEventArgsToCommand="True" />
+            </i:EventTrigger>
+            <i:EventTrigger EventName="MouseDoubleClick">
+                <i:InvokeCommandAction
+                    Command="{Binding MaximizeWindowCommand}"
                     CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
                     PassEventArgsToCommand="True" />
             </i:EventTrigger>
@@ -64,7 +72,8 @@
                     Width="30"
                     Height="30"
                     Padding="0"
-                    IsEnabled="False"
+                    Command="{Binding MaximizeWindowCommand}"
+                    CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
                     Style="{StaticResource MaterialDesignFlatButton}">
                     <materialDesign:PackIcon Kind="WindowMaximize" />
                 </Button>

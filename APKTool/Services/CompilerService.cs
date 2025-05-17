@@ -27,11 +27,13 @@ public class CompilerService : ICompilerService
             throw new Exception("No decompiled apks found to compile.");
         }
 
+        _notifier.NotifyConsole($"Recompiling APK files...", OutputType.Debug);
+
         foreach (string folder in directories)
         {
             string folderName = Path.GetFileName(folder);
             string outputFile = Path.Combine(apkPath, PathService.CompiledPath, $"{folderName}.apk");
-            _notifier.NotifyConsole($"Compiling {folderName}.apk...", OutputType.Debug);
+            
 
             var (success, output) = await Task.Run(async () =>
             {
@@ -46,7 +48,6 @@ public class CompilerService : ICompilerService
             Activity activity = new Activity($"{folderName}.apk", "apk compiled", Activity.ActivityType.APK);
             _notifier.NotifyActivity(activity);
         }
-        _notifier.NotifyConsole($"Successfully comiled {directories.Length} APKs", OutputType.Process);
     }
 }
 

@@ -30,9 +30,7 @@
                     Source="/Resources/Icons/folder.svg" />
                 <TextBlock
                     Margin="5,5,0,5"
-                    FontSize="15"
-                    FontWeight="Medium"
-                    Foreground="{DynamicResource CustomPrimaryTextColor}"
+                    Style="{StaticResource CustomMenuTitleText}"
                     Text="APK File Selection" />
             </StackPanel>
             <Grid Grid.Row="1" Margin="0,15,0,0">
@@ -50,6 +48,7 @@
                         HorizontalAlignment="Stretch"
                         materialDesign:HintAssist.Hint="/games/com.example.game/"
                         BorderThickness="0"
+                        FontSize="14"
                         FontWeight="Medium"
                         Foreground="{DynamicResource CustomPrimaryTextColor}"
                         Text="{Binding ApkDirectory}" />
@@ -61,7 +60,7 @@
                     Padding="0"
                     materialDesign:ButtonAssist.CornerRadius="0,5,5,0"
                     Background="{DynamicResource CustomButtonBackgroundColor}"
-                    Command="{Binding BrowseFolderCommand}"
+                    Command="{Binding APKFolderSelectDialogCommand}"
                     Style="{StaticResource CustomButton}">
                     <Button.Content>
                         <materialDesign:PackIcon

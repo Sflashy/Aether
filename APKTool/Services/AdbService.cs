@@ -15,6 +15,7 @@ public interface IAdbService
     string GetCpuUsage(Device device);
     string GetRamUsage(Device device);
     Task InstallApksAsync(string apkPath);
+    void PushFile(string filePath, string destPath);
 }
 public class AdbService : IAdbService
 {
@@ -92,7 +93,7 @@ public class AdbService : IAdbService
             return;
         }
 
-        _notifier.NotifyConsole($"Starting APK installation process...", OutputType.Debug);
+       
         _notifier.NotifyConsole($"Installing {apks.Length} APK files...", OutputType.Debug);
         var installCommand = $"adb install-multiple {string.Join(" ", apks.Select(apk => $"\"{apk}\""))}";
 
@@ -107,7 +108,6 @@ public class AdbService : IAdbService
             _notifier.NotifyActivity(new Activity(string.Join(" | ", apks.Select(apk => Path.GetFileName(apk))), "APKs installed", Activity.ActivityType.APK));
         }
     }
-
 
     public string GetCpuUsage(Device device)
     {
@@ -131,8 +131,7 @@ public class AdbService : IAdbService
 
         return "N/A";
     }
-
-
+    
     public string GetRamUsage(Device device)
     {
         var output = RunAdbCommand("shell cat /proc/meminfo");
@@ -159,4 +158,9 @@ public class AdbService : IAdbService
         return $"{used:0.0} GB";
     }
 
+    public void PushFile(string filePath, string destPath)
+    {
+        string moveCommand = $"push {filePath} {destPath}";
+        RunAdbCommand(moveCommand);
+    }
 }

@@ -37,6 +37,7 @@ public partial class App : Application
         services.AddTransient<IInjectorService, InjectorService>();
         services.AddTransient<IDeviceMonitorService, DeviceMonitorService>();
         services.AddTransient<IMetaDataService, MetaDataService>();
+        services.AddTransient<IDialogService, DialogService>();
         services.AddSingleton(_ => Dispatcher.CurrentDispatcher);
 
         Ioc.Default.ConfigureServices(services.BuildServiceProvider());

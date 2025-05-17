@@ -30,9 +30,7 @@
                     Source="/Resources/Icons/console.svg" />
                 <TextBlock
                     Margin="5,7,0,5"
-                    FontSize="15"
-                    FontWeight="Medium"
-                    Foreground="{DynamicResource CustomPrimaryTextColor}"
+                    Style="{StaticResource CustomMenuTitleText}"
                     Text="Console Output" />
             </StackPanel>
 
@@ -45,6 +43,7 @@
                     x:Name="ListView"
                     FontFamily="{StaticResource JetBrainsMono}"
                     ItemsSource="{Binding ConsoleOutputs}"
+                    ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                     ScrollViewer.ScrollChanged="ListView_ScrollChanged"
                     ScrollViewer.VerticalScrollBarVisibility="Hidden"
                     SelectionMode="Single">

@@ -1,5 +1,7 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using APKTool.Services;
+using CommunityToolkit.Mvvm.ComponentModel;
 using Newtonsoft.Json;
+using System.IO;
 using System.Text.RegularExpressions;
 
 namespace APKTool.Models;
@@ -9,7 +11,7 @@ public partial class Frida : ObservableObject
     [JsonProperty("id")]
     public int Id { get; set; }
     [JsonProperty("tag_name")]
-    public string TagName { get; set; }
+    public string Version { get; set; }
     [JsonProperty("name")]
     public string Name { get; set; }
     [JsonProperty("assets")]
@@ -28,6 +30,7 @@ public partial class Frida : ObservableObject
 
     [ObservableProperty]
     public partial string Architecture { get; set; }
+
 
 }
 

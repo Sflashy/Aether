@@ -32,9 +32,9 @@ public class SignerService : ISignerService
         }
 
         var apks = Directory.GetFiles(Path.Combine(apkPath, PathService.CompiledPath), "*.apk", SearchOption.AllDirectories);
+        _notifier.NotifyConsole($"Signing APK files...", OutputType.Debug);
         foreach (var apkFile in apks)
         {
-            _notifier.NotifyConsole($"Signing: {Path.GetFileName(apkFile)}...", OutputType.Debug);
             var signCommand = $"apksigner sign --ks \"{PathService.KeyStoreFile}\" --ks-key-alias {Alias} --ks-pass pass:{KeyStorePassword} --key-pass pass:{KeyPassword} --out \"{Path.Combine(apkPath, PathService.CompiledPath)}\\{Path.GetFileName(apkFile)}\" \"{apkFile}\"";
 
             var (success, output) = await Task.Run(() => ProcessHelper.RunAsync("cmd.exe", $"/C {signCommand}"));

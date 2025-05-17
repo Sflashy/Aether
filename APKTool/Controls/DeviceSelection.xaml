@@ -24,9 +24,7 @@
             </Grid.RowDefinitions>
             <TextBlock
                 Grid.Row="0"
-                FontSize="15"
-                FontWeight="Medium"
-                Foreground="{DynamicResource CustomPrimaryTextColor}"
+                Style="{StaticResource CustomMenuTitleText}"
                 Text="Device Selection" />
             <ComboBox
                 Grid.Row="1"
@@ -35,7 +33,9 @@
                 Padding="10"
                 Background="{DynamicResource CustomButtonBackgroundColor}"
                 BorderThickness="0"
+                FontSize="14"
                 FontWeight="Medium"
+                Foreground="{StaticResource CustomPrimaryTextColor}"
                 ItemsSource="{Binding Devices}"
                 SelectedItem="{Binding SelectedDevice, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                 Style="{StaticResource MaterialDesignOutlinedComboBox}">
@@ -65,23 +65,22 @@
                     Grid.Row="0"
                     Grid.Column="0"
                     HorizontalAlignment="Left"
-                    FontWeight="Medium"
-                    Foreground="{DynamicResource CustomSecondaryTextColor}"
+                    Style="{StaticResource CustomMenuSecondaryTitleText}"
                     Text="Status:" />
                 <TextBlock
                     Grid.Row="0"
                     Grid.Column="1"
                     HorizontalAlignment="Right"
-                    FontWeight="Medium"
                     Foreground="{Binding SelectedDevice.Status, Converter={StaticResource DeviceStatusColorConverter}}"
+                    Style="{StaticResource CustomMenuSecondaryTitleText}"
                     Text="{Binding SelectedDevice.Status}" />
                 <TextBlock
                     Grid.Row="1"
                     Grid.Column="0"
                     Margin="0,10,0,0"
                     HorizontalAlignment="Left"
-                    FontWeight="Medium"
                     Foreground="{DynamicResource CustomSecondaryTextColor}"
+                    Style="{StaticResource CustomMenuSecondaryTitleText}"
                     Text="USB Debugging:" />
                 <TextBlock
                     Grid.Row="1"
@@ -89,37 +88,8 @@
                     Margin="0,10,0,0"
                     HorizontalAlignment="Right"
                     Foreground="{Binding SelectedDevice.USBDebuggingStatus, Converter={StaticResource USBDebuggingStatusToColorConverter}}"
+                    Style="{StaticResource CustomMenuSecondaryTitleText}"
                     Text="{Binding SelectedDevice.USBDebuggingStatus}" />
-                <TextBlock
-                    Grid.Row="2"
-                    Grid.Column="0"
-                    Margin="0,10,0,0"
-                    HorizontalAlignment="Left"
-                    FontWeight="Medium"
-                    Foreground="{DynamicResource CustomSecondaryTextColor}"
-                    Text="Architecture:" />
-                <TextBlock
-                    Grid.Row="2"
-                    Grid.Column="1"
-                    Margin="0,10,0,0"
-                    HorizontalAlignment="Right"
-                    Foreground="#00FF9F"
-                    Text="{Binding SelectedDevice.Architecture}" />
-                <TextBlock
-                    Grid.Row="3"
-                    Grid.Column="0"
-                    Margin="0,10,0,0"
-                    HorizontalAlignment="Left"
-                    FontWeight="Medium"
-                    Foreground="{DynamicResource CustomSecondaryTextColor}"
-                    Text="Android:" />
-                <TextBlock
-                    Grid.Row="3"
-                    Grid.Column="1"
-                    Margin="0,10,0,0"
-                    HorizontalAlignment="Right"
-                    Foreground="#00FF9F"
-                    Text="{Binding SelectedDevice.Android}" />
             </Grid>
         </Grid>
     </materialDesign:Card>

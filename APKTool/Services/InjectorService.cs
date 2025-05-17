@@ -1,32 +1,43 @@
 ﻿using APKTool.Models;
 using System.IO;
 using System.Text.Json;
-using System.Windows;
 using static APKTool.Models.ConsoleOutput;
+using static APKTool.Services.InjectorService;
 
 namespace APKTool.Services;
 
 public interface IInjectorService
 {
-    void Initialize(string apkPath);
+    void Initialize(string apkPath, FridaConfig config);
     Task InjectFridaAsync(Frida fridaVersion);
     Task PathchSmaliAsync();
 }
 public class InjectorService : IInjectorService
 {
-    INotifierService _notifier;
+    public enum InjectType
+    {
+        Debug,
+        Persistent
+    }
+   
     private string _apkPath;
-    public InjectorService(INotifierService notifier)
+    private FridaConfig _config;
+    private readonly INotifierService _notifier;
+    private readonly IAdbService _adbService;
+    public InjectorService(INotifierService notifier, IAdbService adbService)
     {
         _notifier = notifier;
+        _adbService = adbService;
+
     }
-    public void Initialize(string apkPath)
+    public void Initialize(string apkPath, FridaConfig config)
     {
         _apkPath = apkPath;
+        _config = config;
     }
     public async Task InjectFridaAsync(Frida frida)
     {
-        _notifier.NotifyConsole("Analyzing for architecture...", OutputType.Debug);
+        _notifier.NotifyConsole("Injecting frida gadget libraries...", OutputType.Info);
         var decompiledDirs = Directory.GetDirectories(Path.Combine(_apkPath, PathService.DecompiledPath));
 
         foreach (var dir in decompiledDirs)
@@ -62,6 +73,8 @@ public class InjectorService : IInjectorService
                 {
                     File.Copy(fridaGadgetPath, destPath, true);
                     await CreateFridaConfigFileAsync(destPath);
+                    //TODO: if the game has not installed this will fail. (no game folder)
+                    InjectFridaScriptAsync();
                 }
                 else
                 {
@@ -70,26 +83,22 @@ public class InjectorService : IInjectorService
             }
         }
     }
-    public async Task CreateFridaConfigFileAsync(string destPath)
+    private void InjectFridaScriptAsync()
+    {
+        if (_config.InjectType != InjectType.Persistent) return;
+        _notifier.NotifyConsole($"Injecting {Path.GetFileName(_config.ScriptFilePath)}...", OutputType.Info);
+        _adbService.PushFile(_config.ScriptFilePath, _config.ScriptFileDest);
+
+    }
+    private async Task CreateFridaConfigFileAsync(string destPath)
     {
         try
         {
-            _notifier.NotifyConsole("Generating frida-gadget config file...", OutputType.Debug);
-            string directory = Path.GetDirectoryName(destPath)!;
+            _notifier.NotifyConsole("Generating frida-gadget-config.so file...", OutputType.Debug);
+            string directory = Path.GetDirectoryName(destPath);
             string configFilePath = Path.Combine(directory, "libfrida-gadget.config.so");
 
-            var config = new
-            {
-                interaction = new
-                {
-                    type = "listen",
-                    address = "127.0.0.1",
-                    port = 27042,
-                    on_load = "resume"
-                }
-            };
-
-            string json = JsonSerializer.Serialize(config, new JsonSerializerOptions
+            string json = JsonSerializer.Serialize(_config.Script, new JsonSerializerOptions
             {
                 WriteIndented = true
             });

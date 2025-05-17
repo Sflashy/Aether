@@ -27,9 +27,7 @@
                     Source="/Resources/Icons/activity.svg" />
                 <TextBlock
                     Margin="5,5,0,5"
-                    FontSize="15"
-                    FontWeight="Medium"
-                    Foreground="{DynamicResource CustomPrimaryTextColor}"
+                    Style="{StaticResource CustomMenuTitleText}"
                     Text="Recent Activity" />
             </StackPanel>
             <Border

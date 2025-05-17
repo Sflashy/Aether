@@ -3,6 +3,33 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes">
 
+    <!--  Background Colors  -->
+    <Color x:Key="CustomDarkBackground">#161b22</Color>
+    <SolidColorBrush x:Key="CustomDarkBackgroundColor" Color="{StaticResource CustomDarkBackground}" />
+
+    <Color x:Key="CustomDarkerBackground">#0d1117</Color>
+    <SolidColorBrush x:Key="CustomDarkerBackgroundColor" Color="{StaticResource CustomDarkerBackground}" />
+
+    <Color x:Key="CustomConsoleBackground">#1c1c1c</Color>
+    <SolidColorBrush x:Key="CustomConsoleBackgroundColor" Color="{StaticResource CustomConsoleBackground}" />
+
+    <Color x:Key="CustomButtonBackground">#3a4556</Color>
+    <SolidColorBrush x:Key="CustomButtonBackgroundColor" Color="{StaticResource CustomButtonBackground}" />
+
+    <!--  Text Colors  -->
+    <Color x:Key="CustomPrimaryText">#e0e0e0</Color>
+    <SolidColorBrush x:Key="CustomPrimaryTextColor" Color="{StaticResource CustomPrimaryText}" />
+
+    <Color x:Key="CustomSecondaryText">#a0a0a0</Color>
+    <SolidColorBrush x:Key="CustomSecondaryTextColor" Color="{StaticResource CustomSecondaryText}" />
+
+    <Color x:Key="CustomBorder">#313131</Color>
+    <SolidColorBrush x:Key="CustomBorderColor" Color="{StaticResource CustomBorder}" />
+
+    <Color x:Key="CustomNeon">#00FF9F</Color>
+
+    <SolidColorBrush x:Key="CustomNeonColor" Color="{StaticResource CustomNeon}" />
+
     <!--  Status Colors  -->
     <Color x:Key="CustomInfoText">#66D9EF</Color>
     <SolidColorBrush x:Key="CustomInfoTextColor" Color="{StaticResource CustomInfoText}" />
@@ -13,6 +40,17 @@
     <Color x:Key="CustomErorrText">#ff5555</Color>
     <SolidColorBrush x:Key="CustomErorrTextColor" Color="{StaticResource CustomErorrText}" />
 
+    <Style x:Key="CustomMenuTitleText" TargetType="{x:Type TextBlock}">
+        <Setter Property="Foreground" Value="{StaticResource CustomPrimaryTextColor}" />
+        <Setter Property="FontWeight" Value="Medium" />
+        <Setter Property="FontSize" Value="15" />
+    </Style>
+
+    <Style x:Key="CustomMenuSecondaryTitleText" TargetType="{x:Type TextBlock}">
+        <Setter Property="Foreground" Value="{StaticResource CustomSecondaryTextColor}" />
+        <Setter Property="FontWeight" Value="Medium" />
+        <Setter Property="FontSize" Value="13" />
+    </Style>
 
     <Style
         x:Key="CustomButton"
@@ -88,6 +126,7 @@
             </Setter.Value>
         </Setter>
     </Style>
+
     <Style
         x:Key="CustomProgressBar"
         BasedOn="{StaticResource MaterialDesignLinearProgressBar}"
