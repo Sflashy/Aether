@@ -1,0 +1,501 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net9.0-windows</TargetFramework>
+    <Nullable>disable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+	  <LangVersion>preview</LangVersion>
+	  <ApplicationIcon>Resources\Icons\default.ico</ApplicationIcon>
+	  <SignAssembly>False</SignAssembly>
+	  <Title>Aether</Title>
+	  <Description>Mobile Game Modding and Automation Tool</Description>
+	  <Copyright>Sflashy</Copyright>
+	  <PackageProjectUrl></PackageProjectUrl>
+	  <RepositoryUrl>https://github.com/sflashy/Aether</RepositoryUrl>
+	  <RepositoryType>git</RepositoryType>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
+    <PackageReference Include="MaterialDesignColors" Version="5.2.1" />
+    <PackageReference Include="MaterialDesignThemes" Version="5.2.1" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.4" />
+	<PackageReference Include="Microsoft.Extensions.Hosting" Version="9.0.0" />
+	<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+	<PackageReference Include="SharpCompress" Version="0.39.0" />
+	<PackageReference Include="SharpVectors.Wpf" Version="1.8.4.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+	 <None Remove="Resources\Icons.default.ico" />
+	 <ApplicationDefinition Remove="App.xaml" />
+	 <None Remove="Resources\Fonts\Inter\Inter_18pt-Black.ttf" />
+	 <None Remove="Resources\Fonts\Inter\Inter_18pt-BlackItalic.ttf" />
+	 <None Remove="Resources\Fonts\Inter\Inter_18pt-Bold.ttf" />
+	 <None Remove="Resources\Fonts\Inter\Inter_18pt-BoldItalic.ttf" />
+	 <None Remove="Resources\Fonts\Inter\Inter_18pt-ExtraBold.ttf" />
+	 <None Remove="Resources\Fonts\Inter\Inter_18pt-ExtraBoldItalic.ttf" />
+	 <None Remove="Resources\Fonts\Inter\Inter_18pt-ExtraLight.ttf" />
+	 <None Remove="Resources\Fonts\Inter\Inter_18pt-ExtraLightItalic.ttf" />
+	 <None Remove="Resources\Fonts\Inter\Inter_18pt-Italic.ttf" />
+	 <None Remove="Resources\Fonts\Inter\Inter_18pt-Light.ttf" />
+	 <None Remove="Resources\Fonts\Inter\Inter_18pt-LightItalic.ttf" />
+	 <None Remove="Resources\Fonts\Inter\Inter_18pt-Medium.ttf" />
+	 <None Remove="Resources\Fonts\Inter\Inter_18pt-MediumItalic.ttf" />
+	 <None Remove="Resources\Fonts\Inter\Inter_18pt-Regular.ttf" />
+	 <None Remove="Resources\Fonts\Inter\Inter_18pt-SemiBold.ttf" />
+	 <None Remove="Resources\Fonts\Inter\Inter_18pt-SemiBoldItalic.ttf" />
+	 <None Remove="Resources\Fonts\Inter\Inter_18pt-Thin.ttf" />
+	 <None Remove="Resources\Fonts\Inter\Inter_18pt-ThinItalic.ttf" />
+	 <None Remove="Resources\Fonts\Inter\Inter_24pt-Black.ttf" />
+	 <None Remove="Resources\Fonts\Inter\Inter_24pt-BlackItalic.ttf" />
+	 <None Remove="Resources\Fonts\Inter\Inter_24pt-Bold.ttf" />
+	 <None Remove="Resources\Fonts\Inter\Inter_24pt-BoldItalic.ttf" />
+	 <None Remove="Resources\Fonts\Inter\Inter_24pt-ExtraBold.ttf" />
+	 <None Remove="Resources\Fonts\Inter\Inter_24pt-ExtraBoldItalic.ttf" />
+	 <None Remove="Resources\Fonts\Inter\Inter_24pt-ExtraLight.ttf" />
+	 <None Remove="Resources\Fonts\Inter\Inter_24pt-ExtraLightItalic.ttf" />
+	 <None Remove="Resources\Fonts\Inter\Inter_24pt-Italic.ttf" />
+	 <None Remove="Resources\Fonts\Inter\Inter_24pt-Light.ttf" />
+	 <None Remove="Resources\Fonts\Inter\Inter_24pt-LightItalic.ttf" />
+	 <None Remove="Resources\Fonts\Inter\Inter_24pt-Medium.ttf" />
+	 <None Remove="Resources\Fonts\Inter\Inter_24pt-MediumItalic.ttf" />
+	 <None Remove="Resources\Fonts\Inter\Inter_24pt-Regular.ttf" />
+	 <None Remove="Resources\Fonts\Inter\Inter_24pt-SemiBold.ttf" />
+	 <None Remove="Resources\Fonts\Inter\Inter_24pt-SemiBoldItalic.ttf" />
+	 <None Remove="Resources\Fonts\Inter\Inter_24pt-Thin.ttf" />
+	 <None Remove="Resources\Fonts\Inter\Inter_24pt-ThinItalic.ttf" />
+	 <None Remove="Resources\Fonts\Inter\Inter_28pt-Black.ttf" />
+	 <None Remove="Resources\Fonts\Inter\Inter_28pt-BlackItalic.ttf" />
+	 <None Remove="Resources\Fonts\Inter\Inter_28pt-Bold.ttf" />
+	 <None Remove="Resources\Fonts\Inter\Inter_28pt-BoldItalic.ttf" />
+	 <None Remove="Resources\Fonts\Inter\Inter_28pt-ExtraBold.ttf" />
+	 <None Remove="Resources\Fonts\Inter\Inter_28pt-ExtraBoldItalic.ttf" />
+	 <None Remove="Resources\Fonts\Inter\Inter_28pt-ExtraLight.ttf" />
+	 <None Remove="Resources\Fonts\Inter\Inter_28pt-ExtraLightItalic.ttf" />
+	 <None Remove="Resources\Fonts\Inter\Inter_28pt-Italic.ttf" />
+	 <None Remove="Resources\Fonts\Inter\Inter_28pt-Light.ttf" />
+	 <None Remove="Resources\Fonts\Inter\Inter_28pt-LightItalic.ttf" />
+	 <None Remove="Resources\Fonts\Inter\Inter_28pt-Medium.ttf" />
+	 <None Remove="Resources\Fonts\Inter\Inter_28pt-MediumItalic.ttf" />
+	 <None Remove="Resources\Fonts\Inter\Inter_28pt-Regular.ttf" />
+	 <None Remove="Resources\Fonts\Inter\Inter_28pt-SemiBold.ttf" />
+	 <None Remove="Resources\Fonts\Inter\Inter_28pt-SemiBoldItalic.ttf" />
+	 <None Remove="Resources\Fonts\Inter\Inter_28pt-Thin.ttf" />
+	 <None Remove="Resources\Fonts\Inter\Inter_28pt-ThinItalic.ttf" />
+	 <None Remove="Resources\Icons\activity.svg" />
+	 <None Remove="Resources\Icons\Activity\device.svg" />
+	 <None Remove="Resources\Icons\Activity\script.svg" />
+	 <None Remove="Resources\Icons\apk.svg" />
+	 <None Remove="Resources\Icons\attachment.svg" />
+	 <None Remove="Resources\Icons\console.svg" />
+	 <None Remove="Resources\Icons\folder.svg" />
+	 <None Remove="Resources\Icons\icon.svg" />
+	 <None Remove="Resources\Fonts\JetBrainsMono\JetBrainsMono-Bold.ttf" />
+	 <None Remove="Resources\Fonts\JetBrainsMono\JetBrainsMono-BoldItalic.ttf" />
+	 <None Remove="Resources\Fonts\JetBrainsMono\JetBrainsMono-ExtraBold.ttf" />
+	 <None Remove="Resources\Fonts\JetBrainsMono\JetBrainsMono-ExtraBoldItalic.ttf" />
+	 <None Remove="Resources\Fonts\JetBrainsMono\JetBrainsMono-ExtraLight.ttf" />
+	 <None Remove="Resources\Fonts\JetBrainsMono\JetBrainsMono-ExtraLightItalic.ttf" />
+	 <None Remove="Resources\Fonts\JetBrainsMono\JetBrainsMono-Italic.ttf" />
+	 <None Remove="Resources\Fonts\JetBrainsMono\JetBrainsMono-Light.ttf" />
+	 <None Remove="Resources\Fonts\JetBrainsMono\JetBrainsMono-LightItalic.ttf" />
+	 <None Remove="Resources\Fonts\JetBrainsMono\JetBrainsMono-Medium.ttf" />
+	 <None Remove="Resources\Fonts\JetBrainsMono\JetBrainsMono-MediumItalic.ttf" />
+	 <None Remove="Resources\Fonts\JetBrainsMono\JetBrainsMono-Regular.ttf" />
+	 <None Remove="Resources\Fonts\JetBrainsMono\JetBrainsMono-SemiBold.ttf" />
+	 <None Remove="Resources\Fonts\JetBrainsMono\JetBrainsMono-SemiBoldItalic.ttf" />
+	 <None Remove="Resources\Fonts\JetBrainsMono\JetBrainsMono-Thin.ttf" />
+	 <None Remove="Resources\Fonts\JetBrainsMono\JetBrainsMono-ThinItalic.ttf" />
+	 <None Remove="Resources\Fonts\JetBrainsMono\JetBrainsMonoNL-Bold.ttf" />
+	 <None Remove="Resources\Fonts\JetBrainsMono\JetBrainsMonoNL-BoldItalic.ttf" />
+	 <None Remove="Resources\Fonts\JetBrainsMono\JetBrainsMonoNL-ExtraBold.ttf" />
+	 <None Remove="Resources\Fonts\JetBrainsMono\JetBrainsMonoNL-ExtraBoldItalic.ttf" />
+	 <None Remove="Resources\Fonts\JetBrainsMono\JetBrainsMonoNL-ExtraLight.ttf" />
+	 <None Remove="Resources\Fonts\JetBrainsMono\JetBrainsMonoNL-ExtraLightItalic.ttf" />
+	 <None Remove="Resources\Fonts\JetBrainsMono\JetBrainsMonoNL-Italic.ttf" />
+	 <None Remove="Resources\Fonts\JetBrainsMono\JetBrainsMonoNL-Light.ttf" />
+	 <None Remove="Resources\Fonts\JetBrainsMono\JetBrainsMonoNL-LightItalic.ttf" />
+	 <None Remove="Resources\Fonts\JetBrainsMono\JetBrainsMonoNL-Medium.ttf" />
+	 <None Remove="Resources\Fonts\JetBrainsMono\JetBrainsMonoNL-MediumItalic.ttf" />
+	 <None Remove="Resources\Fonts\JetBrainsMono\JetBrainsMonoNL-Regular.ttf" />
+	 <None Remove="Resources\Fonts\JetBrainsMono\JetBrainsMonoNL-SemiBold.ttf" />
+	 <None Remove="Resources\Fonts\JetBrainsMono\JetBrainsMonoNL-SemiBoldItalic.ttf" />
+	 <None Remove="Resources\Fonts\JetBrainsMono\JetBrainsMonoNL-Thin.ttf" />
+	 <None Remove="Resources\Fonts\JetBrainsMono\JetBrainsMonoNL-ThinItalic.ttf" />
+	 <None Remove="Resources\Fonts\Urbanist-Black.ttf" />
+	 <None Remove="Resources\Fonts\Urbanist-BlackItalic.ttf" />
+	 <None Remove="Resources\Fonts\Urbanist-Bold.ttf" />
+	 <None Remove="Resources\Fonts\Urbanist-BoldItalic.ttf" />
+	 <None Remove="Resources\Fonts\Urbanist-ExtraBold.ttf" />
+	 <None Remove="Resources\Fonts\Urbanist-ExtraBoldItalic.ttf" />
+	 <None Remove="Resources\Fonts\Urbanist-ExtraLight.ttf" />
+	 <None Remove="Resources\Fonts\Urbanist-ExtraLightItalic.ttf" />
+	 <None Remove="Resources\Fonts\Urbanist-Italic.ttf" />
+	 <None Remove="Resources\Fonts\Urbanist-Light.ttf" />
+	 <None Remove="Resources\Fonts\Urbanist-LightItalic.ttf" />
+	 <None Remove="Resources\Fonts\Urbanist-Medium.ttf" />
+	 <None Remove="Resources\Fonts\Urbanist-MediumItalic.ttf" />
+	 <None Remove="Resources\Fonts\Urbanist-Regular.ttf" />
+	 <None Remove="Resources\Fonts\Urbanist-SemiBold.ttf" />
+	 <None Remove="Resources\Fonts\Urbanist-SemiBoldItalic.ttf" />
+	 <None Remove="Resources\Fonts\Urbanist-Thin.ttf" />
+	 <None Remove="Resources\Fonts\Urbanist-ThinItalic.ttf" />
+	 <None Remove="Resources\Icons\inject.svg" />
+	 <None Remove="Resources\Icons\new_script.svg" />
+	 <None Remove="Resources\Icons\recycle_bin.svg" />
+	 <Content Include="Resources\Icons\default.ico" />
+	  <Page Include="App.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Fonts\Inter\Inter_18pt-Black.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\Inter\Inter_18pt-BlackItalic.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\Inter\Inter_18pt-Bold.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\Inter\Inter_18pt-BoldItalic.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\Inter\Inter_18pt-ExtraBold.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\Inter\Inter_18pt-ExtraBoldItalic.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\Inter\Inter_18pt-ExtraLight.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\Inter\Inter_18pt-ExtraLightItalic.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\Inter\Inter_18pt-Italic.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\Inter\Inter_18pt-Light.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\Inter\Inter_18pt-LightItalic.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\Inter\Inter_18pt-Medium.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\Inter\Inter_18pt-MediumItalic.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\Inter\Inter_18pt-Regular.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\Inter\Inter_18pt-SemiBold.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\Inter\Inter_18pt-SemiBoldItalic.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\Inter\Inter_18pt-Thin.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\Inter\Inter_18pt-ThinItalic.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\Inter\Inter_24pt-Black.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\Inter\Inter_24pt-BlackItalic.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\Inter\Inter_24pt-Bold.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\Inter\Inter_24pt-BoldItalic.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\Inter\Inter_24pt-ExtraBold.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\Inter\Inter_24pt-ExtraBoldItalic.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\Inter\Inter_24pt-ExtraLight.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\Inter\Inter_24pt-ExtraLightItalic.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\Inter\Inter_24pt-Italic.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\Inter\Inter_24pt-Light.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\Inter\Inter_24pt-LightItalic.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\Inter\Inter_24pt-Medium.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\Inter\Inter_24pt-MediumItalic.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\Inter\Inter_24pt-Regular.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\Inter\Inter_24pt-SemiBold.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\Inter\Inter_24pt-SemiBoldItalic.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\Inter\Inter_24pt-Thin.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\Inter\Inter_24pt-ThinItalic.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\Inter\Inter_28pt-Black.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\Inter\Inter_28pt-BlackItalic.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\Inter\Inter_28pt-Bold.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\Inter\Inter_28pt-BoldItalic.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\Inter\Inter_28pt-ExtraBold.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\Inter\Inter_28pt-ExtraBoldItalic.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\Inter\Inter_28pt-ExtraLight.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\Inter\Inter_28pt-ExtraLightItalic.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\Inter\Inter_28pt-Italic.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\Inter\Inter_28pt-Light.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\Inter\Inter_28pt-LightItalic.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\Inter\Inter_28pt-Medium.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\Inter\Inter_28pt-MediumItalic.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\Inter\Inter_28pt-Regular.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\Inter\Inter_28pt-SemiBold.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\Inter\Inter_28pt-SemiBoldItalic.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\Inter\Inter_28pt-Thin.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\Inter\Inter_28pt-ThinItalic.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\activity.svg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\Activity\apk.svg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\Activity\device.svg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\Activity\script.svg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\attachment.svg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\console.svg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\folder.svg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\icon.svg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\JetBrainsMono\JetBrainsMono-Bold.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\JetBrainsMono\JetBrainsMono-BoldItalic.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\JetBrainsMono\JetBrainsMono-ExtraBold.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\JetBrainsMono\JetBrainsMono-ExtraBoldItalic.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\JetBrainsMono\JetBrainsMono-ExtraLight.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\JetBrainsMono\JetBrainsMono-ExtraLightItalic.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\JetBrainsMono\JetBrainsMono-Italic.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\JetBrainsMono\JetBrainsMono-Light.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\JetBrainsMono\JetBrainsMono-LightItalic.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\JetBrainsMono\JetBrainsMono-Medium.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\JetBrainsMono\JetBrainsMono-MediumItalic.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\JetBrainsMono\JetBrainsMono-Regular.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\JetBrainsMono\JetBrainsMono-SemiBold.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\JetBrainsMono\JetBrainsMono-SemiBoldItalic.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\JetBrainsMono\JetBrainsMono-Thin.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\JetBrainsMono\JetBrainsMono-ThinItalic.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\JetBrainsMono\JetBrainsMonoNL-Bold.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\JetBrainsMono\JetBrainsMonoNL-BoldItalic.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\JetBrainsMono\JetBrainsMonoNL-ExtraBold.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\JetBrainsMono\JetBrainsMonoNL-ExtraBoldItalic.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\JetBrainsMono\JetBrainsMonoNL-ExtraLight.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\JetBrainsMono\JetBrainsMonoNL-ExtraLightItalic.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\JetBrainsMono\JetBrainsMonoNL-Italic.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\JetBrainsMono\JetBrainsMonoNL-Light.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\JetBrainsMono\JetBrainsMonoNL-LightItalic.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\JetBrainsMono\JetBrainsMonoNL-Medium.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\JetBrainsMono\JetBrainsMonoNL-MediumItalic.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\JetBrainsMono\JetBrainsMonoNL-Regular.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\JetBrainsMono\JetBrainsMonoNL-SemiBold.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\JetBrainsMono\JetBrainsMonoNL-SemiBoldItalic.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\JetBrainsMono\JetBrainsMonoNL-Thin.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\JetBrainsMono\JetBrainsMonoNL-ThinItalic.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\Urbanist\Urbanist-Black.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\Urbanist\Urbanist-BlackItalic.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\Urbanist\Urbanist-Bold.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\Urbanist\Urbanist-BoldItalic.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\Urbanist\Urbanist-ExtraBold.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\Urbanist\Urbanist-ExtraBoldItalic.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\Urbanist\Urbanist-ExtraLight.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\Urbanist\Urbanist-ExtraLightItalic.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\Urbanist\Urbanist-Italic.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\Urbanist\Urbanist-Light.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\Urbanist\Urbanist-LightItalic.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\Urbanist\Urbanist-Medium.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\Urbanist\Urbanist-MediumItalic.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\Urbanist\Urbanist-Regular.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\Urbanist\Urbanist-SemiBold.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\Urbanist\Urbanist-SemiBoldItalic.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\Urbanist\Urbanist-Thin.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\Urbanist\Urbanist-ThinItalic.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\inject.svg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\new_script.svg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\recycle_bin.svg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+</Project>
