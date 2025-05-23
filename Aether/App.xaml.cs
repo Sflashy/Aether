@@ -51,4 +51,10 @@ public partial class App : Application
 
         Ioc.Default.ConfigureServices(services.BuildServiceProvider());
     }
+    protected override void OnExit(ExitEventArgs e)
+    {
+        base.OnExit(e);
+        IAdbService adb = Ioc.Default.GetRequiredService<IAdbService>();
+        adb.RunAdbCommand("kill-server");
+    }
 }

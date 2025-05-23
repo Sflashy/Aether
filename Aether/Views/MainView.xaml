@@ -16,7 +16,6 @@
     d:DataContext="{d:DesignInstance Type=viewmodels:MainViewModel}"
     Background="{DynamicResource CustomDarkerBackgroundColor}"
     FontFamily="{StaticResource Urbanist}"
-    Topmost="True"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
     <WindowChrome.WindowChrome>

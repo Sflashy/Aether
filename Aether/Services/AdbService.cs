@@ -23,6 +23,32 @@ public class AdbService : IAdbService
     public AdbService(INotifierService notifier)
     {
         _notifier = notifier;
+        Initialize();
+    }
+
+    private void Initialize()
+    {
+        Task.Run(() =>
+        {
+            _notifier.NotifyConsole("Attempting to start ADB server...", OutputType.Info);
+            var output = RunAdbCommand("start-server");
+            if (!string.IsNullOrWhiteSpace(output))
+            {
+                _notifier.NotifyConsole($"ADB server output: {output}", OutputType.Debug);
+            }
+            _notifier.NotifyConsole("ADB server started successfully.", OutputType.Success);
+            CheckDevicesOnStartup();
+
+        });
+    }
+    private void CheckDevicesOnStartup()
+    {
+        _notifier.NotifyConsole("Scanning for connected devices...", OutputType.Debug);
+        Device[] devices = GetDevices();
+        if (devices.Length == 0)
+        {
+            _notifier.NotifyConsole("No device connected!, ensure your device is connected via USB", OutputType.Warning);
+        }
     }
     public bool IsAdbConnected(string deviceId)
     {
@@ -30,14 +56,14 @@ public class AdbService : IAdbService
         return output.Contains($"{deviceId}\tdevice");
     }
 
-    public  Device[] GetDevices()
+    public Device[] GetDevices()
     {
         string devices = RunAdbCommand("devices");
-        string[] deviceLines = devices.Split(new[] { '\n' }, StringSplitOptions.RemoveEmptyEntries);
+        string[] deviceLines = devices.Split(['\n'], StringSplitOptions.RemoveEmptyEntries);
         Device[] devicesList = new Device[deviceLines.Length - 1];
         for (int i = 1; i < deviceLines.Length; i++)
         {
-            string[] deviceInfo = deviceLines[i].Split(new[] { '\t' }, StringSplitOptions.RemoveEmptyEntries);
+            string[] deviceInfo = deviceLines[i].Split(['\t'], StringSplitOptions.RemoveEmptyEntries);
             devicesList[i - 1] = new Device { Id = deviceInfo[0] };
         }
         return devicesList;
@@ -114,14 +140,12 @@ public class AdbService : IAdbService
         if (string.IsNullOrWhiteSpace(output))
             return "N/A";
 
-        // Çıktıyı satırlara ayır
         var lines = output.Split('\n');
 
-        // İlk satırı al ve 'TOTAL' kısmındaki yüzdeyi bul
         var totalLine = lines.FirstOrDefault(line => line.Contains("TOTAL"));
         if (totalLine != null)
         {
-            var match = Regex.Match(totalLine, @"(\d+(\.\d+)?)%"); // Yüzdeyi al
+            var match = Regex.Match(totalLine, @"(\d+(\.\d+)?)%");
             if (match.Success)
             {
                 return $"{match.Groups[1].Value}%";
@@ -150,7 +174,7 @@ public class AdbService : IAdbService
         if (!totalMatch.Success || !availableMatch.Success)
             return "N/A";
 
-        var total = double.Parse(totalMatch.Value) / 1024;      // kB → MB
+        var total = double.Parse(totalMatch.Value) / 1024;
         var available = double.Parse(availableMatch.Value) / 1024;
         var used = (total - available) / 1024;
 

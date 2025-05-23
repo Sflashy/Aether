@@ -15,6 +15,11 @@
 	  <PackageProjectUrl></PackageProjectUrl>
 	  <RepositoryUrl>https://github.com/sflashy/Aether</RepositoryUrl>
 	  <RepositoryType>git</RepositoryType>
+	  <Platforms>AnyCPU;x64</Platforms>
+	  <PublishSingleFile>true</PublishSingleFile>
+	  <SelfContained>true</SelfContained>
+	  <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+	  <PublishTrimmed>false</PublishTrimmed>
   </PropertyGroup>
 
   <ItemGroup>
@@ -91,6 +96,7 @@
 	 <None Remove="Resources\Icons\apk.svg" />
 	 <None Remove="Resources\Icons\attachment.svg" />
 	 <None Remove="Resources\Icons\console.svg" />
+	 <None Remove="Resources\Icons\default.ico" />
 	 <None Remove="Resources\Icons\folder.svg" />
 	 <None Remove="Resources\Icons\icon.svg" />
 	 <None Remove="Resources\Fonts\JetBrainsMono\JetBrainsMono-Bold.ttf" />
@@ -329,6 +335,9 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\Icons\console.svg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\default.ico">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\Icons\folder.svg">

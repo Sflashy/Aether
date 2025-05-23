@@ -54,7 +54,8 @@ public class ApkProcessingService : IApkProcessingService
 
     public async Task InstallApksAsync()
     {
-        if (!_adb.IsAdbConnected(_device.Id))
+        bool isAdbConnected = _adb.IsAdbConnected(_device.Id);
+        if (!isAdbConnected)
         {
             throw new Exception("Failed to install APKs. ADB is not connected.");
         }

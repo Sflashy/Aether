@@ -19,10 +19,12 @@ public partial class DeviceViewModel : BaseViewModel, IRecipient<DeviceFoundMess
     public partial Device SelectedDevice { get; set; }
 
     private readonly IDeviceMonitorService _deviceMonitorService;
+    private readonly IAdbService _adb;
 
-    public DeviceViewModel(IDeviceMonitorService deviceMonitorService, INotifierService notifierService, Dispatcher dispatcher) : base(notifierService, dispatcher)
+    public DeviceViewModel(IAdbService adbService, IDeviceMonitorService deviceMonitorService, INotifierService notifierService, Dispatcher dispatcher) : base(notifierService, dispatcher)
     {
         _deviceMonitorService = deviceMonitorService;
+        _adb = adbService;
         Initialize();
     }
 

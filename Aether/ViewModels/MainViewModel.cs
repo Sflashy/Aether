@@ -5,6 +5,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.Messaging;
 using System.Collections.ObjectModel;
+using System.Reflection;
 using System.Windows;
 using System.Windows.Threading;
 using static Aether.Models.ConsoleOutput;
@@ -26,7 +27,8 @@ public partial class MainViewModel : BaseViewModel, IRecipient<ConsoleMessage>
     {
         ConsoleOutputs = new ObservableCollection<ConsoleOutput>();
         WeakReferenceMessenger.Default.Register<ConsoleMessage>(this);
-        _notifier.NotifyConsole("Frida APK Injector v1.0", OutputType.Debug);
+        string version = Assembly.GetExecutingAssembly().GetName().Version.ToString();
+        _notifier.NotifyConsole($"Aether v{version}", OutputType.Debug);
     }
 
 

@@ -33,7 +33,7 @@ public class FridaService : IFridaService
 
         try
         {
-            var (fridaGadgetUrl, outputFile) = GetFridaGadgetDownloadUrlAndPath(frida, architecture);
+            var (fridaGadgetUrl, outputFile) = GetFridaGadgetDownloadUrlAndPath(architecture);
 
             using var response = await _httpClient.GetAsync(fridaGadgetUrl, HttpCompletionOption.ResponseHeadersRead);
             if (!response.IsSuccessStatusCode)
@@ -73,7 +73,7 @@ public class FridaService : IFridaService
 
     public async Task<Frida[]> GetFridaVersionsAsync()
     {
-        _notifier.NotifyConsole("Checking for latest frida-gadget version...", OutputType.Debug);
+        //_notifier.NotifyConsole("Checking for latest frida-gadget version...", OutputType.Debug);
         HttpResponseMessage response = await _httpClient.GetAsync("https://api.github.com/repos/frida/frida/releases?per_page=5");
         if (!response.IsSuccessStatusCode)
         {
@@ -90,11 +90,11 @@ public class FridaService : IFridaService
 
 
         fridas[0].Version = fridas[0].Version + " (latest)";
-        _notifier.NotifyConsole($"Latest frida-gadget version found: {fridas[0].Version}", OutputType.Info);
+        //_notifier.NotifyConsole($"Latest frida-gadget version found: {fridas[0].Version}", OutputType.Info);
         return fridas;
     }
 
-    private (string fridaGadgetUrl, string outputFile) GetFridaGadgetDownloadUrlAndPath(Frida frida, Architecture architecture)
+    private (string fridaGadgetUrl, string outputFile) GetFridaGadgetDownloadUrlAndPath(Architecture architecture)
     {
         string fridaGadgetUrl = architecture.DownloadUrl;
         string fileName = Path.GetFileName(fridaGadgetUrl);
