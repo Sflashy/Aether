@@ -20,6 +20,7 @@
             <FontFamily x:Key="Inter">pack://application:,,,/Resources/Fonts/Inter/#Inter</FontFamily>
             <FontFamily x:Key="Urbanist">pack://application:,,,/Resources/Fonts/Urbanist/#Urbanist</FontFamily>
             <FontFamily x:Key="JetBrainsMono">pack://application:,,,/Resources/Fonts/JetBrainsMono/#JetBrains Mono</FontFamily>
+            <FontFamily x:Key="SourceSans">pack://application:,,,/Resources/Fonts/SourceSans3/#Source Sans 3</FontFamily>
             <converters:ConsoleOutputColorConverter x:Key="ConsoleOutputColorConverter" />
             <converters:DoubleToVisibilityConverter x:Key="DoubleToVisibilityConverter" />
             <converters:DeviceStatusColorConverter x:Key="DeviceStatusColorConverter" />

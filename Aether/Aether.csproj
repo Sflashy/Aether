@@ -34,6 +34,22 @@
   </ItemGroup>
 
   <ItemGroup>
+	 <None Remove="Resources\Fonts\SourceSans3\SourceSans3-Black.ttf" />
+	 <None Remove="Resources\Fonts\SourceSans3\SourceSans3-BlackItalic.ttf" />
+	 <None Remove="Resources\Fonts\SourceSans3\SourceSans3-Bold.ttf" />
+	 <None Remove="Resources\Fonts\SourceSans3\SourceSans3-BoldItalic.ttf" />
+	 <None Remove="Resources\Fonts\SourceSans3\SourceSans3-ExtraBold.ttf" />
+	 <None Remove="Resources\Fonts\SourceSans3\SourceSans3-ExtraBoldItalic.ttf" />
+	 <None Remove="Resources\Fonts\SourceSans3\SourceSans3-ExtraLight.ttf" />
+	 <None Remove="Resources\Fonts\SourceSans3\SourceSans3-ExtraLightItalic.ttf" />
+	 <None Remove="Resources\Fonts\SourceSans3\SourceSans3-Italic.ttf" />
+	 <None Remove="Resources\Fonts\SourceSans3\SourceSans3-Light.ttf" />
+	 <None Remove="Resources\Fonts\SourceSans3\SourceSans3-LightItalic.ttf" />
+	 <None Remove="Resources\Fonts\SourceSans3\SourceSans3-Medium.ttf" />
+	 <None Remove="Resources\Fonts\SourceSans3\SourceSans3-MediumItalic.ttf" />
+	 <None Remove="Resources\Fonts\SourceSans3\SourceSans3-Regular.ttf" />
+	 <None Remove="Resources\Fonts\SourceSans3\SourceSans3-SemiBold.ttf" />
+	 <None Remove="Resources\Fonts\SourceSans3\SourceSans3-SemiBoldItalic.ttf" />
 	 <None Remove="Resources\Icons.default.ico" />
 	 <ApplicationDefinition Remove="App.xaml" />
 	 <None Remove="Resources\Fonts\Inter\Inter_18pt-Black.ttf" />
@@ -317,6 +333,54 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\Fonts\Inter\Inter_28pt-ThinItalic.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\SourceSans3\SourceSans3-Black.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\SourceSans3\SourceSans3-BlackItalic.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\SourceSans3\SourceSans3-Bold.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\SourceSans3\SourceSans3-BoldItalic.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\SourceSans3\SourceSans3-ExtraBold.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\SourceSans3\SourceSans3-ExtraBoldItalic.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\SourceSans3\SourceSans3-ExtraLight.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\SourceSans3\SourceSans3-ExtraLightItalic.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\SourceSans3\SourceSans3-Italic.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\SourceSans3\SourceSans3-Light.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\SourceSans3\SourceSans3-LightItalic.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\SourceSans3\SourceSans3-Medium.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\SourceSans3\SourceSans3-MediumItalic.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\SourceSans3\SourceSans3-Regular.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\SourceSans3\SourceSans3-SemiBold.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\SourceSans3\SourceSans3-SemiBoldItalic.ttf">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\Icons\activity.svg">

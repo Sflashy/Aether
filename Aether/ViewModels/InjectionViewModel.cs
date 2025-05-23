@@ -1,6 +1,7 @@
 ﻿using Aether.Models;
 using Aether.Services;
 using CommunityToolkit.Mvvm.Input;
+using System.Runtime.CompilerServices;
 using System.Windows.Threading;
 using static Aether.Models.ConsoleOutput;
 using static Aether.Services.InjectorService;
@@ -47,7 +48,7 @@ public partial class InjectionViewModel : BaseViewModel
             }
             catch (Exception ex)
             {
-                _notifier.NotifyConsole($"Error during {step.Method.Name}: {ex.Message}", OutputType.Error);
+                _notifier.NotifyConsole($"ERROR: {ex.Message}", OutputType.Error);
                 return;
             }
         }

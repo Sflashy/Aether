@@ -4,26 +4,26 @@
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes">
 
     <!--  Background Colors  -->
-    <Color x:Key="CustomDarkBackground">#161b22</Color>
+    <Color x:Key="CustomDarkBackground">#161719</Color>
     <SolidColorBrush x:Key="CustomDarkBackgroundColor" Color="{StaticResource CustomDarkBackground}" />
 
-    <Color x:Key="CustomDarkerBackground">#0d1117</Color>
+    <Color x:Key="CustomDarkerBackground">#0c0d0e</Color>
     <SolidColorBrush x:Key="CustomDarkerBackgroundColor" Color="{StaticResource CustomDarkerBackground}" />
 
     <Color x:Key="CustomConsoleBackground">#1c1c1c</Color>
     <SolidColorBrush x:Key="CustomConsoleBackgroundColor" Color="{StaticResource CustomConsoleBackground}" />
 
-    <Color x:Key="CustomButtonBackground">#3a4556</Color>
+    <Color x:Key="CustomButtonBackground">#212326</Color>
     <SolidColorBrush x:Key="CustomButtonBackgroundColor" Color="{StaticResource CustomButtonBackground}" />
 
-    <Color x:Key="CustomButtonHoverBackground">#4B5A6E</Color>
+    <Color x:Key="CustomButtonHoverBackground">#292b2f</Color>
     <SolidColorBrush x:Key="CustomButtonHoverBackgroundColor" Color="{StaticResource CustomButtonHoverBackground}" />
 
     <Color x:Key="CustomButtonDisabledBackground">#6C7687</Color>
     <SolidColorBrush x:Key="CustomButtonDisabledBackgroundColor" Color="{StaticResource CustomButtonDisabledBackground}" />
 
     <!--  Text Colors  -->
-    <Color x:Key="CustomPrimaryText">#e0e0e0</Color>
+    <Color x:Key="CustomPrimaryText">#c5c8c6</Color>
     <SolidColorBrush x:Key="CustomPrimaryTextColor" Color="{StaticResource CustomPrimaryText}" />
 
     <Color x:Key="CustomSecondaryText">#a0a0a0</Color>
@@ -62,31 +62,54 @@
     <Style
         x:Key="CustomButton"
         BasedOn="{StaticResource MaterialDesignFlatButton}"
-        TargetType="{x:Type Button}">
+        TargetType="Button">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Foreground" Value="{DynamicResource MaterialDesignBody}" />
+        <Setter Property="Padding" Value="8,4" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="{x:Type Button}">
+                <ControlTemplate TargetType="Button">
                     <Border
-                        x:Name="Border"
+                        x:Name="BackgroundBorder"
                         Background="{TemplateBinding Background}"
                         CornerRadius="{TemplateBinding materialDesign:ButtonAssist.CornerRadius}"
-                        IsEnabled="{TemplateBinding IsEnabled}">
-                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        RenderTransformOrigin="0.5,0.5">
+                        <ContentPresenter
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            RecognizesAccessKey="True" />
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="Border" Property="Background" Value="{StaticResource CustomButtonHoverBackgroundColor}" />
-                        </Trigger>
-                        <Trigger Property="IsEnabled" Value="False">
-                            <Setter TargetName="Border" Property="Background" Value="{StaticResource CustomButtonDisabledBackgroundColor}" />
-                            <Setter TargetName="Border" Property="Cursor" Value="Arrow" />
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation
+                                            Storyboard.TargetName="BackgroundBorder"
+                                            Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                            To="#3A3D42"
+                                            Duration="0:0:0.2" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation
+                                            Storyboard.TargetName="BackgroundBorder"
+                                            Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                            To="{StaticResource CustomButtonBackground}"
+                                            Duration="0:0:0.2" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
     </Style>
-
     <Style
         x:Key="CustomToggleButtonStyle"
         BasedOn="{StaticResource MaterialDesignSwitchToggleButton}"

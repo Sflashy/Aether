@@ -11,5 +11,10 @@ public partial class MainView : Window
         InitializeComponent();
         ViewModel = viewModel;
         DataContext = ViewModel;
+
+#if DEBUG
+        this.Topmost = true;
+#endif
+
     }
 }
