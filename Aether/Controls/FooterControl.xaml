@@ -44,12 +44,11 @@
                 FontSize="13"
                 FontWeight="Medium"
                 Foreground="{DynamicResource CustomSecondaryTextColor}">
-                <Run Text="Frida Server:" />
-                <Run Text="v16.7.18" />
-                <Run Text="|" />
-                <Run Text="ADB: v1.0.41" />
-                <Run Text="|" />
-                <Run Text="Frida APK Injector: v1.0" />
+                <Run Text="ADB:" />
+                <Run Text="{Binding ADBVersion, Mode=OneWay}" />
+                <Run Text=" |" />
+                <Run Text="Aether:" />
+                <Run Text="{Binding AppVersion, Mode=OneWay}" />
             </TextBlock>
             <TextBlock
                 Grid.Column="2"

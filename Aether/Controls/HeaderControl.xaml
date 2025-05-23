@@ -51,7 +51,7 @@
                     FontSize="15"
                     FontWeight="Medium"
                     Foreground="{DynamicResource CustomPrimaryTextColor}"
-                    Text="Frida APK Injector" />
+                    Text="Aether" />
             </Grid>
 
             <StackPanel
