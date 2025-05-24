@@ -28,12 +28,13 @@ public partial class FridaViewModel : BaseViewModel, IRecipient<FridaDownloadSta
     [ObservableProperty]
     public partial Architecture SelectedFridaArchitecture { get; set; }
 
-
     [ObservableProperty]
     public partial string SelectedScriptPath { get; set; }
 
     [ObservableProperty]
     public partial InjectionType InjectionType { get; set; } = InjectionType.Debug;
+
+    public string SelectedFridaGadgetAndArchitecture => $"frida-gadget-{SelectedFridaGadget.NormalizedVersion}-android-{SelectedFridaArchitecture.ABIName}.so";
 
     private readonly IFridaService _fridaService;
     private readonly IDialogService _dialogService;

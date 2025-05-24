@@ -73,8 +73,9 @@ public class FridaService : IFridaService
 
     public async Task<Frida[]> GetFridaVersionsAsync()
     {
+        _notifier.NotifyDownloadStatus(1);
         //_notifier.NotifyConsole("Checking for latest frida-gadget version...", OutputType.Debug);
-        HttpResponseMessage response = await _httpClient.GetAsync("https://api.github.com/repos/frida/frida/releases?per_page=5");
+        HttpResponseMessage response = await _httpClient.GetAsync("https://api.github.com/repos/frida/frida/releases");
         if (!response.IsSuccessStatusCode)
         {
             _notifier.NotifyConsole($"Failed to check for frida-gadget versions due to {response.ReasonPhrase.ToLower()}", OutputType.Error);
@@ -91,6 +92,7 @@ public class FridaService : IFridaService
 
         fridas[0].Version = fridas[0].Version + " (latest)";
         //_notifier.NotifyConsole($"Latest frida-gadget version found: {fridas[0].Version}", OutputType.Info);
+        _notifier.NotifyDownloadStatus(0);
         return fridas;
     }
 

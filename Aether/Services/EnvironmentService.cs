@@ -37,7 +37,7 @@ public class EnvironmentService : IEnvironmentService
     {
         _notifier.NotifyConsole("Initializing environment...", OutputType.Debug);
         EnsureAPKToolInstalled();
-        EnsureFridaGadgetSelected();
+        EnsureFridaGadgetSelectedAndDownloaded();
         EnsureWorkspaceSelected();
         EnsureDeviceIsConnected();
         await EnsureCleanup();
@@ -85,10 +85,18 @@ public class EnvironmentService : IEnvironmentService
         throw new EnvironmentInitializeException($"Could not find Aether in {PathService.ApkToolPath}");
 
     }
-    private void EnsureFridaGadgetSelected()
+    private void EnsureFridaGadgetSelectedAndDownloaded()
     {
-        if (_fridaVm.SelectedFridaGadget != null) return;
-        throw new EnvironmentInitializeException($"Please choose a frida-gadget version to proceed!");
+        if (_fridaVm.SelectedFridaGadget == null)
+        {
+            throw new EnvironmentInitializeException($"Please choose a frida-gadget version to proceed!");
+        }
+        
+        string[] files = Directory.GetFiles(PathService.FridaGadgetDirectory);
+        if (!files.Any(f => f.Contains(_fridaVm.SelectedFridaGadgetAndArchitecture)))
+        {
+            throw new EnvironmentInitializeException($"Please download the selected frida-gadget version to proceed!");
+        }
     }
 
 }

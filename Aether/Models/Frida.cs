@@ -19,6 +19,8 @@ public partial class Frida : ObservableObject
 
     [ObservableProperty]
     public partial bool IsInstalled { get; set; }
+
+    public string NormalizedVersion => Version.Replace(" (latest)", "");
 }
 
 public partial class Architecture : ObservableObject
