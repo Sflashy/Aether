@@ -29,10 +29,11 @@ public class DecompilerService : IDecompilerService
         _notifier.NotifyConsole($"Decompiling APK files...", OutputType.Debug);
         foreach (string apk in apks)
         {
+            _notifier.NotifyConsole($"Decompiling {Path.GetFileName(apk)}...", OutputType.Debug);
             
             var (success, output) = await Task.Run(async () =>
             {
-                return await ProcessHelper.RunAsync(PathService.ApkToolPath, $"d \"{apk}\" -f -o \"{Path.Combine(workspace, PathService.DecompiledPath)}/{Path.GetFileNameWithoutExtension(apk)}\"");
+                return await ProcessHelper.RunAsync($"java", $"-Xmx4G -jar {PathService.ApkToolJarPath} d \"{apk}\" -f -o \"{Path.Combine(workspace, PathService.DecompiledPath)}/{Path.GetFileNameWithoutExtension(apk)}\"");
             });
             if(!success)
             {

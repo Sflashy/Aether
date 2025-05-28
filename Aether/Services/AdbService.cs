@@ -120,9 +120,9 @@ public class AdbService : IAdbService
 
        
         _notifier.NotifyConsole($"Installing {apks.Length} APK files...", OutputType.Debug);
-        var installCommand = $"adb install-multiple {string.Join(" ", apks.Select(apk => $"\"{apk}\""))}";
+        var installCommand = $"install-multiple {string.Join(" ", apks.Select(apk => $"\"{apk}\""))}";
 
-        var (success, output) = await Task.Run(() => ProcessHelper.RunAsync("cmd.exe", $"/C {installCommand}"));
+        var (success, output) = await Task.Run(() => ProcessHelper.RunAsync(PathService.AdbPath, $"{installCommand}"));
 
         if (!success)
         {

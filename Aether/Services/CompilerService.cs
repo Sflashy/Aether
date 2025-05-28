@@ -32,11 +32,11 @@ public class CompilerService : ICompilerService
         {
             string folderName = Path.GetFileName(folder);
             string outputFile = Path.Combine(apkPath, PathService.CompiledPath, $"{folderName}.apk");
-            
 
+            _notifier.NotifyConsole($"Recompiling {folderName}.apk...", OutputType.Debug);
             var (success, output) = await Task.Run(async () =>
             {
-                return await ProcessHelper.RunAsync(PathService.ApkToolPath, $"b \"{folder}\" -o \"{outputFile}\"");
+                return await ProcessHelper.RunAsync($"java", $"-Xmx4G -jar {PathService.ApkToolJarPath} b \"{folder}\" -o \"{outputFile}\"");
             });
 
             if (!success)

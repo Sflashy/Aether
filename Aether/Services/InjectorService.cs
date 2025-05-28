@@ -1,6 +1,7 @@
 ﻿using Aether.Models;
 using System.IO;
 using System.Text.Json;
+using System.Windows;
 using static Aether.Models.ConsoleOutput;
 using static Aether.Services.InjectorService;
 
@@ -122,7 +123,17 @@ public class InjectorService : IInjectorService
 
         if (filePath == null)
         {
-            throw new Exception("File UnityPlayerActivity.smali not found.");
+            var msgBox = MessageBox.Show("UnityPlayerActivity.smali not found. Do you want to continue building?", "File Not Found", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (msgBox == MessageBoxResult.Yes)
+            {
+                _notifier.NotifyConsole("UnityPlayerActivity.smali not found. Continuing without modification.", OutputType.Warning);
+                return;
+            }
+            else
+            {
+                throw new Exception("File UnityPlayerActivity.smali not found.");
+            }
+            
         }
 
         string[] lines = await File.ReadAllLinesAsync(filePath);

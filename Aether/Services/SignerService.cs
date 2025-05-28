@@ -22,7 +22,6 @@ public class SignerService : ISignerService
 
     public async Task SignApkAsync(string apkPath)
     {
-
         if (!File.Exists(PathService.KeyStoreFile))
         {
             _notifier.NotifyConsole($"Keystore not found, creating... {PathService.KeyStoreFile}", OutputType.Process);
@@ -34,12 +33,13 @@ public class SignerService : ISignerService
         _notifier.NotifyConsole($"Signing APK files...", OutputType.Debug);
         foreach (var apkFile in apks)
         {
-            var signCommand = $"apksigner sign --ks \"{PathService.KeyStoreFile}\" --ks-key-alias {Alias} --ks-pass pass:{KeyStorePassword} --key-pass pass:{KeyPassword} --out \"{Path.Combine(apkPath, PathService.CompiledPath)}\\{Path.GetFileName(apkFile)}\" \"{apkFile}\"";
+            _notifier.NotifyConsole($"Signing {apkFile}...", OutputType.Debug);
+            var signCommand = $"{PathService.APKSignerPath} sign --ks \"{PathService.KeyStoreFile}\" --ks-key-alias {Alias} --ks-pass pass:{KeyStorePassword} --key-pass pass:{KeyPassword} --out \"{Path.Combine(apkPath, PathService.CompiledPath)}\\{Path.GetFileName(apkFile)}\" \"{apkFile}\"";
 
-            var (success, output) = await Task.Run(() => ProcessHelper.RunAsync("cmd.exe", $"/C {signCommand}"));
+            var (success, output) = await Task.Run(() => ProcessHelper.RunAsync("cmd.exe",$"/C {signCommand}"));
             if (!success)
             {
-                _notifier.NotifyConsole($"Error occurred while signing {Path.GetFileName(apkFile)}. {output}", OutputType.Error);
+                throw new Exception($"Error occurred while signing {Path.GetFileName(apkFile)}. {output}");
             }
         }
     }

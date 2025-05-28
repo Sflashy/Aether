@@ -1,4 +1,6 @@
-﻿using System.Diagnostics;
+﻿using Aether.Services;
+using System.Diagnostics;
+using System.IO;
 
 namespace Aether.Utils;
 
@@ -12,6 +14,7 @@ public static class ProcessHelper
             {
                 FileName = fileName,
                 Arguments = arguments,
+                WorkingDirectory = Path.Combine(Directory.GetCurrentDirectory(), PathService.LibDirectory),
                 RedirectStandardOutput = true,
                 RedirectStandardError = true,
                 UseShellExecute = false,
