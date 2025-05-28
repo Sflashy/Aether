@@ -21,7 +21,8 @@
 
 - Windows OS  
 - Android device with USB debugging enabled  
-- .NET 9 (or higher) runtime installed  
+- .NET 9 (or higher) runtime installed
+- Java 8 or higher
 
 ### Installation
 
